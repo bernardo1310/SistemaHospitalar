@@ -115,6 +115,7 @@ public class Main {
                     System.out.println("Opção inválida. Tente novamente.");
             }
             try {
+                //colocar o sistema em espera, 1s 'pode alterar'
                 Thread.sleep(1000);  
             } catch (InterruptedException e) {
                 e.printStackTrace();
