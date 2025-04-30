@@ -26,7 +26,7 @@ public class Main {
         medico1.setDisponivel(true);
         Medico medico2 = new Medico(2, "Dra. Ana Paula", "Cardiologista");
         medico2.setDisponivel(true);
-        Medico medico2 = new Medico(3, "Dra. Georgia Carla", "Neurologista");
+        Medico medico3 = new Medico(3, "Dra. Georgia Carla", "Neurologista");
         medico2.setDisponivel(true);
 
         // instanciando as salas
