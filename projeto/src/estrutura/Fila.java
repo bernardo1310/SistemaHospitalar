@@ -7,7 +7,6 @@ public class Fila {
     private Nodo fim;
     private int limite;
     private int tamanho;
-    
 
     public Fila(int limite) {
         this.inicio = null;
@@ -15,15 +14,15 @@ public class Fila {
         this.limite = limite;
         this.tamanho = 0;
     }
-    
-	public Nodo getFim() {
-		return fim;
-	}
 
-	public void setFim(Nodo fim) {
-		this.fim = fim;
-	}
-	
+    public Nodo getFim() {
+        return fim;
+    }
+
+    public void setFim(Nodo fim) {
+        this.fim = fim;
+    }
+
     public int getTamanho() {
         return tamanho;
     }
@@ -36,7 +35,7 @@ public class Fila {
         return tamanho == 0;
     }
 
-    public void inserir(Paciente paciente) {
+    public boolean inserir(Paciente paciente) {
         if (temEspaco()) {
             Nodo novoNodo = new Nodo(paciente);
             if (estaVazia()) {
@@ -46,18 +45,15 @@ public class Fila {
                 Nodo atual = inicio;
                 Nodo anterior = null;
 
-                // Encontre a posição correta pela prioridade
                 while (atual != null && atual.getPaciente().getPrioridade() <= paciente.getPrioridade()) {
                     anterior = atual;
                     atual = atual.getProx();
                 }
 
                 if (anterior == null) {
-                    // Inserir no início da fila
                     novoNodo.setProx(inicio);
                     inicio = novoNodo;
                 } else {
-                    // Inserir no meio ou no final
                     novoNodo.setProx(atual);
                     anterior.setProx(novoNodo);
                     if (atual == null) {
@@ -66,10 +62,9 @@ public class Fila {
                 }
             }
             tamanho++;
-            System.out.println("Paciente " + paciente.getNome() + " adicionado à fila com prioridade " + paciente.getPrioridade() + ".");
-        } else {
-            System.out.println("Fila cheia! Não foi possível adicionar o paciente " + paciente.getNome() + ".");
+            return true;
         }
+        return false;
     }
 
     public Paciente remover() {
@@ -97,6 +92,4 @@ public class Fila {
             atual = atual.getProx();
         }
     }
-
-
 }
