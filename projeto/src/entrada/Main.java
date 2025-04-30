@@ -21,19 +21,22 @@ public class Main {
         Triagem triagem = new Triagem(filaPacientes);
         AtendimentoMedico atendimentoMedico = new AtendimentoMedico(filaPacientes);
 
-        // Criação de médicos
+        // Instanciando de médicos
         Medico medico1 = new Medico(1, "Dr. Larissa", "Médico geral");
         medico1.setDisponivel(true);
         Medico medico2 = new Medico(2, "Dra. Ana Paula", "Cardiologista");
         medico2.setDisponivel(true);
+        Medico medico2 = new Medico(3, "Dra. Georgia Carla", "Neurologista");
+        medico2.setDisponivel(true);
 
-        // Criação de salas
+        // instanciando as salas
         Sala sala1 = new Sala(1, "Sala 1", 5);
         Sala sala2 = new Sala(2, "Sala 2", 3);
 
         // Cadastro de médicos e salas
         gerenciamentoMedico.cadastrarMedico(medico1);
         gerenciamentoMedico.cadastrarMedico(medico2);
+        gerenciamentoMedico.cadastrarMedico(medico3);
         gerenciamentoSala.cadastrarSala(sala1);
         gerenciamentoSala.cadastrarSala(sala2);
 
@@ -99,7 +102,7 @@ public class Main {
                         int prioridade = random.nextInt(5) + 1; 
 
                         Paciente paciente = new Paciente(filaPacientes.getTamanho() + 1, nomePaciente, sintomas, prioridade);
-                        triagem.realizarTriagem(paciente);  // insere  paciente na fila
+                        triagem.realizarTriagem(paciente); 
 
                         // System.out.println("Paciente " + paciente.getNome() + " adicionado à fila com prioridade " + prioridade + ".");
                     }
