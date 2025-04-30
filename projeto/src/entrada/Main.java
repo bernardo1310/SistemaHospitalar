@@ -14,8 +14,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // Inicialização de dados e objetos
-        Fila filaPacientes = new Fila(10);  // Capacidade da fila
+
+        Fila filaPacientes = new Fila(10); 
         GerenciamentoMedico gerenciamentoMedico = new GerenciamentoMedico();
         GerenciamentoSala gerenciamentoSala = new GerenciamentoSala();
         Triagem triagem = new Triagem(filaPacientes);
@@ -37,10 +37,9 @@ public class Main {
         gerenciamentoSala.cadastrarSala(sala1);
         gerenciamentoSala.cadastrarSala(sala2);
 
-        // Inicializando o gerador de números aleatórios
+        // gerador de números aleatórios
         Random random = new Random();
 
-        // Menu interativo
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("\n--- Menu ---");
@@ -93,19 +92,17 @@ public class Main {
                     filaPacientes.exibirFila();
                     break;
                 case 5:
-                    // Adicionar pacientes aleatórios
-                    int pacientesChegaram = random.nextInt(4);  // Gera entre 0 a 3 pacientes
+                    int pacientesChegaram = 3;
                     for (int i = 0; i < pacientesChegaram; i++) {
-                        // Gerando pacientes aleatórios
                         String nomePaciente = "Paciente " + (filaPacientes.getTamanho() + 1);
                         String sintomas = "Sintomas aleatórios";
-                        int prioridade = random.nextInt(5) + 1;  // Prioridade aleatória de 1 a 5
-                        Paciente paciente = new Paciente(filaPacientes.getTamanho() + 1, nomePaciente, sintomas, prioridade);
+                        int prioridade = random.nextInt(5) + 1; 
 
-                        // Realizando a triagem
-                        triagem.realizarTriagem(paciente);
+                        Paciente paciente = new Paciente(filaPacientes.getTamanho() + 1, nomePaciente, sintomas, prioridade);
+                        triagem.realizarTriagem(paciente);  // insere  paciente na fila
+
+                        // System.out.println("Paciente " + paciente.getNome() + " adicionado à fila com prioridade " + prioridade + ".");
                     }
-                    System.out.println("Pacientes aleatórios adicionados à fila.");
                     break;
                 case 6:
                     System.out.println("Saindo...");
@@ -114,10 +111,8 @@ public class Main {
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
             }
-
-            // Atraso de 1 unidade de tempo antes de continuar (simulando o próximo ciclo de tempo)
             try {
-                Thread.sleep(1000);  // Espera 1 segundo (ou ajusta o tempo conforme necessário)
+                Thread.sleep(1000);  
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
